@@ -3,6 +3,7 @@ package com.traveler.friend.Controller;
 import com.traveler.friend.DTO.ChallengeDTO;
 import com.traveler.friend.Entities.Challenge;
 import com.traveler.friend.Entities.Status;
+import com.traveler.friend.Entities.TypeChallenge;
 import com.traveler.friend.Services.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class ChallengeController {
     }
 
     @GetMapping("/type/{type}")
-    public Optional<Challenge> getChallengeByType(@PathVariable String type) {
+    public Optional<Challenge> getChallengeByType(@PathVariable TypeChallenge type) {
         return challengeService.getChallengeByType(type);
     }
 

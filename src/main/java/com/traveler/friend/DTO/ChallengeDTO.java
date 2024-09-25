@@ -1,11 +1,14 @@
 package com.traveler.friend.DTO;
 
+import com.traveler.friend.Entities.TypeChallenge;
+
 public class ChallengeDTO {
-    private String type;
+    private TypeChallenge type;
     private String name;
     private String description;
+    private int score;
 
-    public String getType() {
+    public TypeChallenge getType() {
         return type;
     }
 
@@ -17,7 +20,11 @@ public class ChallengeDTO {
         return description;
     }
 
-    public void setType(String type) {
+    public int getScore() {
+        return score;
+    }
+
+    public void setType(TypeChallenge type) {
         this.type = type;
     }
 
@@ -27,5 +34,9 @@ public class ChallengeDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

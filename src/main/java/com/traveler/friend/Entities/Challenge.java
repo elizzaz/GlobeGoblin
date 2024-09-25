@@ -11,7 +11,8 @@ public class Challenge {
     private String name;
     private String description;
     private int score;
-    private String type; // "FOOD" / "STREET"
+    @Enumerated(EnumType.ORDINAL)
+    private TypeChallenge type;
 
     @ManyToOne
     @JoinColumn(name = "placeId")
@@ -37,7 +38,7 @@ public class Challenge {
         return place;
     }
 
-    public String getType() {
+    public TypeChallenge getType() {
         return type;
     }
 
@@ -54,10 +55,10 @@ public class Challenge {
     }
 
     public void setPlace(Place place) {
-        new Place();
+    this.place = place;
     }
 
-    public void setType(String type) {
+    public void setType(TypeChallenge type) {
         this.type = type;
     }
 }
