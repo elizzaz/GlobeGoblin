@@ -1,0 +1,10 @@
+[
+  {
+    "googleMapsUri": "http://example.com",
+    "websiteUri": "http://example.com",
+    "displayName": {
+      "text": "Test Place",
+      "languageCode": "en"
+    }
+  }
+]
