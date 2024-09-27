@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Card, List, Typography, Progress, Badge } from "antd";
 import axios from "axios";
+import CreateChallenge from "./CreateChallenge.js";
+import { Link } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -30,13 +32,13 @@ const Dashboard = () => {
       setUserChallenges(challengesResponse.data);
       console.log("challengesResponse.data", challengesResponse.data);
 
-    //   Appel pour récupérer les points de l'utilisateur
-        const userResponse = await axiosInstance.get(`/users/${userId}`);
-        setUserPoints(userResponse.data.points);
+      //   Appel pour récupérer les points de l'utilisateur
+      const userResponse = await axiosInstance.get(`/users/${userId}`);
+      setUserPoints(userResponse.data.points);
 
-    //   Appel pour récupérer les badges de l'utilisateur
-        const badgesResponse = await axiosInstance.get(`/users/badges/${userId}`);
-        setUserBadges(badgesResponse.data.badges);
+      //   Appel pour récupérer les badges de l'utilisateur
+      const badgesResponse = await axiosInstance.get(`/users/badges/${userId}`);
+      setUserBadges(badgesResponse.data.badges);
 
       setLoading(false);
     } catch (error) {
@@ -52,9 +54,9 @@ const Dashboard = () => {
   return (
     <div style={{ padding: "20px" }}>
       <Title level={2} style={{ textAlign: "center" }}>
-        Bienvenue sur votre Dashboard !
+        Salut vieux goblin 🧌
       </Title>
-
+      <CreateChallenge />
       {loading ? (
         <Text>Loading...</Text>
       ) : (
@@ -93,6 +95,10 @@ const Dashboard = () => {
                   >
                     Voir sur Google Maps
                   </a>
+                  <br />
+                  <Link to={`/challenge/${challenge.id}`}>
+                    <button>Voir le défi</button>
+                  </Link>
                 </List.Item>
               )}
             />
@@ -106,8 +112,7 @@ const Dashboard = () => {
               renderItem={(challenge) => (
                 <List.Item>
                   <Text>
-                    {challenge.challenge.name} -
-                    {" "}
+                    {challenge.challenge.name} -{" "}
                     {challenge.challenge.description}
                   </Text>
                   <a
@@ -117,6 +122,9 @@ const Dashboard = () => {
                   >
                     Voir sur Google Maps
                   </a>
+                  <Link to={`/challenge/${challenge.id}`}>
+                    <button>Voir le défi</button>
+                  </Link>
                 </List.Item>
               )}
             />

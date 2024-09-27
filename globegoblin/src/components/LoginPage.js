@@ -55,7 +55,7 @@ const LoginPage = () => {
 
   return (
     <div id="login-register" style={{ maxWidth: 400, margin: 'auto', padding: '50px' }}>
-      <h1 style={{ textAlign: 'center' }}>Bienvenue sur Globe Goblin !</h1>
+      <h1 style={{ textAlign: 'center' }}>Prêt à être un Globe Goblin ? 😈</h1>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Connexion" key="1">
           <Form layout="vertical" onFinish={handleLogin}>

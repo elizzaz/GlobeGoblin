@@ -91,6 +91,26 @@ public class UserChallengeService {
         return null;
     }
 
+    // Méthode pour cancel un défi (lier un utilisateur à un défi)
+    public UserChallenge cancelChallenge(int userId, int challengeId) {
+        Optional<User> userOpt = userRepository.findById(userId);
+        Optional<Challenge> challengeOpt = challengeRepository.findById(challengeId);
+
+        if (userOpt.isPresent() && challengeOpt.isPresent()) {
+            User user = userOpt.get();
+            Challenge challenge = challengeOpt.get();
+
+            UserChallenge userChallenge = new UserChallenge();
+            userChallenge.setUser(user);
+            userChallenge.setChallenge(challenge);
+            userChallenge.setStatus(Status.FAILED);
+
+            return userChallengeRepository.save(userChallenge);
+        }
+
+        return null;
+    }
+
     // Méthode mise à jour pour incrémenter les points
     public UserChallenge updateUserChallengeStatus(int id, Status newStatus) {
         Optional<UserChallenge> userChallengeOpt = userChallengeRepository.findById(id);

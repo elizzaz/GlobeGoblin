@@ -87,6 +87,18 @@ public class UserChallengeController {
         return ResponseEntity.badRequest().build();
     }
 
+    // Route pour cancel un défi
+    @PostMapping("/cancelChallenge/{userId}/{challengeId}")
+    public ResponseEntity<UserChallenge> cancelChallenge(
+            @PathVariable int userId,
+            @PathVariable int challengeId) {
+        UserChallenge userChallenge = userChallengeService.cancelChallenge(userId, challengeId);
+        if (userChallenge != null) {
+            return ResponseEntity.ok(userChallenge);
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserChallenge(@PathVariable int id) {
         userChallengeService.deleteUserChallenge(id);
