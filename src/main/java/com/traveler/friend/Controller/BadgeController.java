@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/badges")
@@ -39,6 +40,11 @@ public class BadgeController {
         return ResponseEntity.ok(badges);
     }
 
+    @GetMapping("/prochainBadge/{userId}")
+    public ResponseEntity<Map<String, Object>> calculateProgressToNextBadge(@PathVariable int userId) {
+        Map<String, Object> result = badgeService.calculateProgressToNextBadge(userId);
+        return ResponseEntity.ok(result);
+    }
 
     @GetMapping("/byUser/{userId}")
     public ResponseEntity<UserDTO> getUserWithBadges(@PathVariable int userId) {

@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.custom-select {
+  border: 1px solid #75892F !important;
+  border-radius: 7px;
+}
+
+.custom-select:focus {
+  border-color: #75892F !important;
+  box-shadow: none;
+}

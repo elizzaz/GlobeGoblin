@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Select, Input, Spin, Typography, message } from "antd";
+import {
+  Button,
+  Modal,
+  Form,
+  Select,
+  Input,
+  Spin,
+  Typography,
+  message,
+} from "antd";
 import axios from "axios";
 
 const { Title, Text } = Typography;
@@ -47,13 +56,9 @@ const CreateChallenge = () => {
     }
   };
 
-  // Fonction pour démarrer le défi
   const startChallenge = async () => {
     if (!challenge || !userId) return;
-    console.log(userId, challenge.challengeId)
-
     try {
-        console.log(userId, challenge.challengeId)
       const response = await axiosInstance.post(
         `/userChallenges/startChallenge/${userId}/${challenge.challengeId}`
       );
@@ -64,11 +69,9 @@ const CreateChallenge = () => {
     }
   };
 
-  // Fonction pour annuler le défi
   const cancelChallenge = async () => {
     if (!challenge || !userId) return;
     try {
-        console.log(userId, challenge.challengeId)
       const response = await axiosInstance.post(
         `/userChallenges/cancelChallenge/${userId}/${challenge.challengeId}`
       );
@@ -82,21 +85,42 @@ const CreateChallenge = () => {
 
   return (
     <div>
-      <Button type="primary" onClick={showModal}>
-        Relever un défi
-      </Button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "5%",
+        }}
+      >
+        <Button
+          type="primary"
+          style={{
+            backgroundColor: "#75892F",
+            borderColor: "#75892F",
+            color: "#fff", // White text for better contrast
+          }}
+          onClick={showModal}
+        >
+          Chaud pour un défi ?
+        </Button>
+      </div>
 
       <Modal
-        title="Relever un défi"
+        title="Chaud pour un défi ?"
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
+        style={{
+          backgroundColor: "#664E4C", // Dark brown background for modal
+          color: "#fff", // White text for better readability
+        }}
       >
         {formVisible && (
           <Form
             layout="vertical"
             onFinish={onFinish}
             initialValues={{ city: "SYDNEY" }}
+            style={{ color: "#fff" }} // White text for form
           >
             <Form.Item
               name="challengeType"
@@ -108,7 +132,7 @@ const CreateChallenge = () => {
                 },
               ]}
             >
-              <Select placeholder="Sélectionner un type de défi">
+              <Select placeholder="Sélectionner un type de défi" className="custom-select">
                 <Option value="NEWFOOD">NEWFOOD</Option>
                 <Option value="OUPS">OUPS</Option>
                 <Option value="EXPLORATION">EXPLORATION</Option>
@@ -132,11 +156,20 @@ const CreateChallenge = () => {
                 },
               ]}
             >
-              <Input placeholder="Entrez le nom de la ville" />
+              <Input placeholder="Entrez le nom de la ville" style={{ borderColor: "#75892F" }} />
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" loading={loading}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                style={{
+                  backgroundColor: "#75892F",
+                  borderColor: "#75892F",
+                  color: "#fff", // White text for better contrast
+                }}
+              >
                 Trouver mon défi
               </Button>
             </Form.Item>
@@ -147,19 +180,22 @@ const CreateChallenge = () => {
 
         {challenge && (
           <div>
-            <Title level={4}>Votre Défi</Title>
-            <Text>Nom : {challenge.name}</Text>
+            <Title level={4} style={{ color: "#664E4C" }}>Votre Défi</Title>
+            <Text level={4} style={{ color: "#664E4C", textAlign:"center" }}>{challenge.name}</Text>
+            <br /><br />
+            <Text style={{ color: "#664E4C" }}>Score : {challenge.score}</Text>
             <br />
-            <Text>Score : {challenge.score}</Text>
-            <br />
-            <Text>Description : {challenge.description}</Text>
-            <br />
-            <Text>Nom du lieu : {challenge.place.displayNameOfContentChallenge}</Text>
+            <Text style={{ color: "#664E4C" }}>{challenge.description}</Text>
+            <br /> <br />
+            <Text style={{ color: "#664E4C" }}>
+              Lieu : {challenge.place.displayNameOfContentChallenge}
+            </Text>
             <br />
             <a
               href={challenge.place.googleMapsUri}
               target="_blank"
               rel="noopener noreferrer"
+              style={{ color: "#75892F" }}
             >
               Voir sur Google Maps
             </a>
@@ -171,19 +207,31 @@ const CreateChallenge = () => {
                   href={challenge.place.websiteUri}
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ color: "#75892F" }}
                 >
                   Voir leur site web
                 </a>
                 <br />
               </>
             )}
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-              <Button type="primary" 
-              onClick={startChallenge}
-              style={{ marginRight: '10px' }}>
+            <div style={{ marginTop: "20px", textAlign: "center" }}>
+              <Button
+                type="primary"
+                onClick={startChallenge}
+                style={{
+                  marginRight: "10px",
+                  backgroundColor: "#75892F",
+                  borderColor: "#75892F",
+                  color: "#fff",
+                }}
+              >
                 Prêt(e) à relever le défi
               </Button>
-              <Button type="default" onClick={cancelChallenge}>
+              <Button
+                type="default"
+                onClick={cancelChallenge}
+                style={{ color: "#664E4C" }}
+              >
                 Naaan c'est trop pour moi
               </Button>
             </div>

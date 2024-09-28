@@ -67,12 +67,12 @@ const ChallengeDetail = () => {
         type="link"
         icon={<ArrowLeftOutlined />}
         onClick={() => navigate("/dashboard")}
-        style={{ float: "right", marginBottom: "20px" }}
+        style={{ color: "#75892F" }}
       >
         Retour
       </Button>
       <Card>
-        <Title level={3}>{userChallenge.challenge.name}</Title>
+        <Title style={{ textAlign:"center"}} level={3}>{userChallenge.challenge.name}</Title>
         <Text>Description : {userChallenge.challenge.description}</Text>
         <br />
         <Text>Score : {userChallenge.challenge.score}</Text>
@@ -85,14 +85,19 @@ const ChallengeDetail = () => {
           href={userChallenge.challenge.place.googleMapsUri}
           target="_blank"
           rel="noopener noreferrer"
+          style={{ color: "#75892F" }}
         >
           Voir sur Google Maps
         </a>
         <br />
         <Button
+        style={{
+            backgroundColor: "#664E4C",
+            borderColor: "#664E4C",
+            marginTop: "20px",
+          }}
           type="primary"
           onClick={() => setIsModalVisible(true)}
-          style={{ marginTop: "20px" }}
         >
           Upload la photo et valide le défi
         </Button>
@@ -110,6 +115,11 @@ const ChallengeDetail = () => {
           style={{ width: "100%", marginBottom: "20px" }}
         />
         <Button
+        style={{
+            backgroundColor: "#664E4C",
+            borderColor: "#664E4C",
+            margin: "20px",
+          }}
           type="primary"
           onClick={handleValidate}
         >
