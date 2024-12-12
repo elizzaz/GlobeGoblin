@@ -40,7 +40,7 @@ public class BadgeController {
         return ResponseEntity.ok(badges);
     }
 
-    @GetMapping("/prochainBadge/{userId}")
+    @GetMapping("/nextBadge/{userId}")
     public ResponseEntity<Map<String, Object>> calculateProgressToNextBadge(@PathVariable int userId) {
         Map<String, Object> result = badgeService.calculateProgressToNextBadge(userId);
         return ResponseEntity.ok(result);

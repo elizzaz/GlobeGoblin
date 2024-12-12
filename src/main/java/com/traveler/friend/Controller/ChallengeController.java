@@ -2,7 +2,6 @@ package com.traveler.friend.Controller;
 
 import com.traveler.friend.DTO.ChallengeDTO;
 import com.traveler.friend.Entities.Challenge;
-import com.traveler.friend.Entities.Status;
 import com.traveler.friend.Entities.TypeChallenge;
 import com.traveler.friend.Services.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;

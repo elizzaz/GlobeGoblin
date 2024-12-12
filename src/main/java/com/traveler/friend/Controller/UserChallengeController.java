@@ -64,7 +64,7 @@ public class UserChallengeController {
         return ResponseEntity.ok(userChallenges);
     }
 
-    // Rroute pour défi gagné
+    // Route pour défi gagné
     @PutMapping("/completeChallenge/{id}/{status}")
     public ResponseEntity<String> completeChallenge(@PathVariable int id, @PathVariable Status status) {
         try {

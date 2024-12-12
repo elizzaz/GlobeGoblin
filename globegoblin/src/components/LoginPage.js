@@ -61,6 +61,7 @@ const LoginPage = () => {
       textAlign: 'center',
       borderRadius: '10px',
     }}>
+      <img src="/logo.png" alt="Logo" style={{ width: '150px', marginBottom: '20px' }} />
       <Title level={2} style={{ marginBottom: '40px', color: '#664E4C' }}>
         Prêt à être un Globe Goblin ? 😈
       </Title>
